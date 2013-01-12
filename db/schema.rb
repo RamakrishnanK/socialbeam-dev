@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130106211950) do
+ActiveRecord::Schema.define(:version => 20130109201702) do
 
   create_table "messages", :force => true do |t|
     t.string   "sender_id",                              :null => false
@@ -43,14 +43,26 @@ ActiveRecord::Schema.define(:version => 20130106211950) do
     t.datetime "updated_at",                                :null => false
   end
 
+  create_table "scribble_comments", :force => true do |t|
+    t.string   "commentor_id"
+    t.string   "commentor"
+    t.text     "body",                        :null => false
+    t.integer  "ups",          :default => 0
+    t.integer  "downs",        :default => 0
+    t.string   "scribble_id"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
+
   create_table "scribbles", :force => true do |t|
     t.string   "post"
     t.string   "posted_by"
-    t.integer  "posted_by_uid"
+    t.string   "posted_by_uid"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.integer  "ups"
     t.integer  "downs"
+    t.string   "scribble_id",   :null => false
   end
 
   create_table "users", :force => true do |t|

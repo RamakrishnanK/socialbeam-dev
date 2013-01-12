@@ -1,6 +1,8 @@
 Socialbeam::Application.routes.draw do
 
-  resources :scribbles
+  resources :scribbles do
+    resources :scribble_comments
+  end
   resources :users do |user|
     resources :messages do
       collection do

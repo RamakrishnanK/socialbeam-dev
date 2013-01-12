@@ -1,47 +1,62 @@
-/* Other Styles beside BootStrap */
+/* Custom Styles */
 
-* { margin: 0; padding: 0; }
-
-html { height: 101%; font-family: “Helvetica Neue”, Arial, Helvetica, sans-serif; background: #fff; }
-body { font-family: Helvetica, Arial, sans-serif; line-height: 20%;}
-
-
+html { -webkit-font-smoothing: antialiased; }
+body {
+	background: #e6e6e6;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-weight: 300;
+}
+textarea.sribble-status-text {
+	margin-left: 60px; 
+	margin-right: 0px; 
+	width: 498px;
+	max-width:498px; 
+	margin-top: 0px; 
+	margin-bottom: 10px; 
+	height: 68px;
+}
+.sribble-status-actions
+{
+	margin-left: 60px; 
+	height:30px;
+	max-width: 510px;
+	text-align:right;
+}
 /* Style for Scribble Posts on Wall*/
-
 .scribblebody
 {
-min-height:100px;
-margin-bottom:10px;
-border-bottom:solid 1px #3b5998 ;
+	min-height:100px;
+	margin-bottom:10px;
+	border-bottom:solid 1px #3b5998 ;
 }
 .scribbleimg
 {
-float:left;
-height:50px;
-width:50px;
-border:solid 1px #d4dae8  ;
-padding:5px;
+	float:left;
+	height:50px;
+	width:50px;
+	border:solid 1px #d4dae8  ;
+	padding:5px;
 }
 
 
 .scribbletext
 {
-margin-left:70px;
-min-height:50px;
-word-wrap:break-word;
-overflow:hidden;
-padding:5px;
-display:block;
-font-family:'Georgia', Times New Roman, Times, serif
+	margin-left:70px;
+	min-height:50px;
+	word-wrap:break-word;
+	overflow:hidden;
+	padding:5px;
+	display:block;
+	font-family:'Georgia', Times New Roman, Times, serif
 }
 .scribbletime
 {
-font-size:11px;
-color:#999;
-font-family:Arial, Helvetica, sans-serif;
-margin-top:10px;
+	font-size:11px;
+	color:#999;
+	font-family:Arial, Helvetica, sans-serif;
+	margin-top:10px;
 }
- 
+
 
 .newsfeed
 {
@@ -150,4 +165,335 @@ a.bttn {
 	margin: 0.5em 0;
 	padding: 0.5em 0.75em;
 }
+
+.ribbon {
+	font-size: 16px !important;
+	width: 80%;
+	position: relative;
+	background: #006699;
+	color: #fff;
+	text-align: center;
+	padding: 1em 2em; /* Adjust to suit */
+	margin: 2em auto 3em; /* Based on 24px vertical rhythm. 48px bottom margin - normally 24 but the ribbon 'graphics' take up 24px themselves so we double it. */
+}
+.ribbon:before, .ribbon:after {
+	content: "";
+	position: absolute;
+	display: block;
+	bottom: -1em;
+	border: 1.5em solid #3399CC;
+	z-index: -1;
+}
+.ribbon:before {
+	left: -2em;
+	border-right-width: 1.5em;
+	border-left-color: transparent;
+}
+.ribbon:after {
+	right: -2em;
+	border-left-width: 1.5em;
+	border-right-color: transparent;
+}
+.ribbon .ribbon-content:before, .ribbon .ribbon-content:after {
+	content: "";
+	position: absolute;
+	display: block;
+	border-style: solid;
+	border-color: #003366 transparent transparent transparent;
+	bottom: -1em;
+}
+.ribbon .ribbon-content:before {
+	left: 0;
+	border-width: 1em 0 0 1em;
+}
+.ribbon .ribbon-content:after {
+	right: 0;
+	border-width: 1em 1em 0 0;
+}
+.corners { 
+	background: #f6f6f6;
+	height: auto;
+	margin: 60px auto;
+	max-width: 600px;
+	position: relative;
+	padding:20px;
+	width: 80%;
+	-webkit-box-shadow: 0 1px 7px hsla(0,0%,0%,.2);
+	-moz-box-shadow: 0 1px 7px hsla(0,0%,0%,.2);
+	box-shadow: 0 1px 7px hsla(0,0%,0%,.2);
+}
+/* Corner Effect */
+.corners:after,
+.corners:before {
+	background: #e6e6e6;
+	content: '';
+	height: 30px;
+	position: absolute;
+	top: -25px;
+	width: 100px;
+	-webkit-box-shadow: 0 5px 10px -7px hsla(0,0%,0%,.5);
+	-moz-box-shadow: 0 5px 10px -7px hsla(0,0%,0%,.5);
+	box-shadow: 0 5px 10px -7px hsla(0,0%,0%,.5);
+}
+.corners:after {
+	left: -50px;
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+.corners:before {
+	right: -50px;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+.bottom-corners:after,
+.bottom-corners:before {
+	background: #e6e6e6;
+	content: '';
+	height: 30px;
+	position: absolute;
+	bottom: -25px;
+	width: 100px;
+	-webkit-box-shadow: 0 6px 9px -8px hsla(0,0%,0%,.5);
+	-moz-box-shadow: 0 6px 9px -8px hsla(0,0%,0%,.5);
+	box-shadow: 0 6px 9px -8px hsla(0,0%,0%,.5);
+}
+.bottom-corners:after {
+	left: -50px;
+	-webkit-transform: rotate(-135deg);
+	-moz-transform: rotate(-135deg);
+	-ms-transform: rotate(-135deg);
+	-o-transform: rotate(-135deg);
+	transform: rotate(-135deg);
+}
+.bottom-corners:before {
+	right: -50px;
+	-webkit-transform: rotate(135deg);
+	-moz-transform: rotate(135deg);
+	-ms-transform: rotate(135deg);
+	-o-transform: rotate(135deg);
+	transform: rotate(135deg);
+}
+
+
+/* Corner Notify Ribbon*/
+.corner-notify {
+	margin: 50px auto;
+	width: 280px;
+	height: 370px;
+	background: white;
+	border-radius: 10px;
+	-webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
+	-moz-box-shadow:    0px 0px 8px rgba(0,0,0,0.3);
+	box-shadow:         0px 0px 8px rgba(0,0,0,0.3);
+	position: relative;
+	z-index: 90;
+}
+
+.ribbon-corner-notify-green {
+	width: 85px;
+	height: 88px;
+	overflow: hidden;
+	position: absolute;
+	top: -3px;
+	right: -3px;
+}
+
+.ribbon-green {
+	font: bold 15px Sans-Serif;
+	color: #333;
+	text-align: center;
+	text-shadow: rgba(255,255,255,0.5) 0px 1px 0px;
+	-webkit-transform: rotate(45deg);
+	-moz-transform:    rotate(45deg);
+	-ms-transform:     rotate(45deg);
+	-o-transform:      rotate(45deg);
+	position: relative;
+	padding: 7px 0;
+	left: -5px;
+	top: 15px;
+	width: 120px;
+	background-color: #BFDC7A;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#BFDC7A), to(#8EBF45)); 
+	background-image: -webkit-linear-gradient(top, #BFDC7A, #8EBF45); 
+	background-image:    -moz-linear-gradient(top, #BFDC7A, #8EBF45); 
+	background-image:     -ms-linear-gradient(top, #BFDC7A, #8EBF45); 
+	background-image:      -o-linear-gradient(top, #BFDC7A, #8EBF45); 
+	color: #6a6340;
+	-webkit-box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+	-moz-box-shadow:    0px 0px 3px rgba(0,0,0,0.3);
+	box-shadow:         0px 0px 3px rgba(0,0,0,0.3);
+}
+
+.ribbon-green:before, .ribbon-green:after {
+	content: "";
+	border-top:   3px solid #6e8900;   
+	border-left:  3px solid transparent;
+	border-right: 3px solid transparent;
+	position:absolute;
+	bottom: -3px;
+}
+
+.ribbon-green:before {
+	left: 0;
+}
+.ribbon-green:after {
+	right: 0;
+}
+
+/* Stitched Div */
+
+.stitched {
+	padding: 5px 10px;
+	margin: 10px;
+	background: #006699;
+	color: #fff;
+	font-size: 21px;
+	font-weight: bold;
+	line-height: 1.3em;
+	border: 2px dashed #fff;
+	border-top-left-radius: 3px;
+	-moz-border-radius-topleft: 3px;
+	-webkit-border-top-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+	-moz-border-radius-bottomright: 3px;
+	-webkit-border-bottom-right-radius: 3px;
+	border-top-right-radius: 3px;
+	-moz-border-radius-topright: 3px;
+	-webkit-border-top-right-radius: 3px;
+	-moz-box-shadow: 0 0 0 4px #006699, 2px 1px 4px 4px rgba(10,10,0,.5);
+	-webkit-box-shadow: 0 0 0 4px #006699, 2px 1px 4px 4px rgba(10,10,0,.5);
+	box-shadow: 0 0 0 4px #006699, 2px 1px 6px 4px rgba(10,10,0,.5);
+	text-shadow: -1px -1px #aa3030;
+	font-weight: normal;
+}
+
+/* Shadows */
+.one-edge-shadow {
+	-webkit-box-shadow: 0 8px 6px -6px black;
+	-moz-box-shadow: 0 8px 6px -6px black;
+	box-shadow: 0 8px 6px -6px black;
+}
+.shadow {
+	-moz-box-shadow:    3px 3px 5px 6px #ccc;
+	-webkit-box-shadow: 3px 3px 5px 6px #ccc;
+	box-shadow:         3px 3px 5px 6px #ccc;
+} 
+
+/* Styled SB Navigation 5 Tabs*/
+
+.sbnav1 {
+	background: #444;
+	border-bottom: 8px solid #E6E2DF;
+	overflow: hidden;
+	position: relative;
+}
+.sbnav1:after {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 2px;
+	background: white; 
+}
+.sbnav1 ul {
+	background: -moz-linear-gradient(left,
+		#444 0%,
+		#444 50%,
+		#41d05f 100%);
+	background: -webkit-gradient(linear, left top, right top,
+		color-stop(0%,#444),
+		color-stop(50%,#444),
+		color-stop(50%,#41d05f),
+		color-stop(100%,#41d05f));
+	list-style: none;
+	overflow: hidden;
+	padding: 0 0 0 20px;
+	width: 97%;
+}
+.sbnav1 li {
+	display: inline;
+}
+.sbnav1 a {
+	color: white;
+	display: block;
+	float: left;
+	font-family: "myriad-pro-1","myriad-pro-2", HelveticaNeue, Helvetica, Arial, Sans-Serif;
+	font-size: 22px;
+	padding: 12px 0;
+	text-decoration: none;
+	text-align: center;
+	width: 19%;
+	-webkit-transition: width 0.12s ease;
+	-moz-transition: width 0.12s ease;
+	-o-transition: width 0.12s ease;
+	transition: width 0.12s ease;
+}
+.sbnav1 a:hover {
+	color: white;
+}
+.sbnav1 a:hover span {
+	border-bottom: 2px solid white;
+}
+.sbnav1 .a-tab1 {
+	background: #ff8400;
+	z-index: 100;
+	position: relative;
+}    
+.sbnav1 .a-tab2 {
+	background: #e42b2b;
+}    
+.sbnav1 .a-tab3 {
+	background: #a800ff;
+}    
+.sbnav1 .a-tab4 {
+	background: #49a7f3;
+}   
+.sbnav1 .a-tab5 {
+	background: #41d05f;
+}
+.home .sbnav1 {
+	border-bottom-color: #ff8400;
+}
+.forums .sbnav1 {
+	border-bottom-color: #e42b2b;
+}
+.videos .sbnav1 {
+	border-bottom-color: #a800ff;
+}
+.downloads .sbnav1 {
+	border-bottom-color: #49a7f3;
+}
+.snippets .sbnav1 {
+	border-bottom-color: #41d05f;
+}
+.sbnav1 li:hover a {
+	width: 24%;
+}
+.sbnav1 ul:hover .active {
+	width: 19%;
+}
+.sbnav1 ul:hover .active:hover {
+	width: 24%;
+}
+.sbnav1 li a.active {
+	width: 24%;
+}
+
+/* Stlyed Leaf Signature after end of Paragraph*/
+/*p:last-child:after {
+	content: "\2766"; 
+	font-size: 200%; 
+	padding-left: 10px;
+	float: right; 
+	position: relative; 
+	top: 15px; 
+	}*/
+
 

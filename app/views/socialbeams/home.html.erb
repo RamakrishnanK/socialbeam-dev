@@ -1,21 +1,24 @@
 <% if current_user %>
-
 <div class="row-fluid">
   <div class="span8">
     <% @scribble = Scribble.new %>
     <%=render :partial => 'scribbles/newscribble'%>
-    <div id="scribblesfeed">
-      <%= render :partial => 'scribbles/scribbles.html.erb', :locals => { :scribbles_streams => @scribbles_streams } %>
-    </div>
-    <p>
+    <div class="corners">
+      <div id="scribblesfeed">
+        <%= render :partial => 'scribbles/scribbles.html.erb', :locals => { :scribbles_streams => @scribbles_streams } %>
+      </div>
+    </br>
     <div id="loading" class="progress progress-striped active">
       <div class="bar" style="width:100%;">Loading more...</div>
     </div>
-    </p>
-  </div>
-  <div class="span4 newsfeed">
-    <%= render :partial => 'newsfeeds/shownewsfeeds', :locals => { :newsfeeds_streams => @newsfeeds_streams } %>
-  </div>
+  </p>
+  <span class="bottom-corners">
+  </span>
+</div>
+</div>
+<div class="span4">
+  <%= render :partial => 'newsfeeds/shownewsfeeds', :locals => { :newsfeeds_streams => @newsfeeds_streams } %>
+</div>
 </div>
 <% end %>
 <script>
@@ -65,7 +68,7 @@ $(document).ready(function(){
           return false
         });
       } else {
-        setTimeout(checkScroll, 1000);
+        setTimeout(checkScroll,2000);
       }
     }else{
       $('#loading').hide()
@@ -74,7 +77,7 @@ $(document).ready(function(){
   };
 
   function nearBottomOfPage() {
-    return scrollDistanceFromBottom() < 150;
+    return scrollDistanceFromBottom() <100;
   }
 
   function scrollDistanceFromBottom(argument) {
@@ -85,7 +88,7 @@ $(document).ready(function(){
     return Math.max(document.body.scrollHeight, document.body.offsetHeight);
   }
 
-  setInterval(checkScroll,1000);
+  setInterval(checkScroll,2000);
 
 });
 </script>

@@ -3,6 +3,14 @@ module Scrubber
 	def random_number(size=11)
 		Array.new(size){rand(10)}.join.to_i
 	end
+    #Generate Scribble_ID
+    def gen_scribble_id
+        begin
+            random_id=random_number(11)
+            scribble_id=("Scribble-" + "#{random_id}")
+        end while Scribble.exists?(:scribble_id =>scribble_id)
+        return scribble_id
+    end 
 
     #Generate Beamer_ID
     def gen_beamer_id
@@ -18,5 +26,5 @@ module Scrubber
           profile_id=SecureRandom.base64(8)
         end while User.exists?(:profile_id =>profile_id)
         return profile_id
-    end    
+    end  
 end

@@ -1,9 +1,0 @@
-    #Download and place jdk-6u29-linux-i586.bin from your Oracle Downloads in your /usr/lib/jvm folder
-    cd /usr/lib/jvm
-    sudo chmod +x jdk-6u29-linux-i586.bin
-    sudo ./jdk-6u29-linux-i586.bin
-  
-    #  After the installation is done
-    #  Put this in your /etc/bash.bashrc
-    #  export JAVA_HOME=/usr/lib/jvm/jdk1.6.0_29
-    # export JRE_HOME=/usr/lib/jvm/jdk1.6.0_29/jre
