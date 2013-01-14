@@ -19,7 +19,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: myapp_production
+  database: df6i0291ul1jma
   pool: 5
   username: root
   password: sb_prod!23
