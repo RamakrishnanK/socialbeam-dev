@@ -17,9 +17,9 @@ test:
   password: root
   socket: /var/run/mysqld/mysqld.sock
 production:
-  adapter: mysql2
+  adapter: postgresql
   encoding: unicode
-  database: socialbeam_storage_prod
+  database: myapp_production
   pool: 5
   username: root
-  password:
+  password: sb_prod!23
