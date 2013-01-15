@@ -16,13 +16,11 @@ test:
   username: root
   password: root
   socket: /var/run/mysqld/mysqld.sock
-#Only for writing in Local Machine Testing Production
-#Heroku will auto-generate Production Configs so below lines are
-# only optional for Heroku Deployment and only meant for testing production on localhost
 production:
-  adapter: postgresql
-  encoding: unicode
-  database: sb_prod
+  adapter: mysql2
+  encoding: utf8
+  database: socialbeam_storage_prod
   pool: 5
   username: root
-  password: sb_prod!23
+  password: root
+  socket: /var/run/mysqld/mysqld.sock

@@ -9,12 +9,8 @@ gem "bcrypt-ruby", :require => "bcrypt"
 gem 'will_paginate', '~> 3.0'
 
 
-group :development, :test do
+group :development, :test , :production do
   gem 'mysql2'
-end
-group :production do
-  gem 'pg'
-  gem 'thin'
 end
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
