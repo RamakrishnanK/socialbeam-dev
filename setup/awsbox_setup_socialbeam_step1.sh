@@ -32,16 +32,16 @@ function install_java
 
 function get_essentials
 {
-    echo "Updating apt-get"
+    say_green "Updating apt-get"
     sudo apt-get update
-    echo "Installing development packages"
+    say_green "Installing development packages"
     sudo apt-get install build-essential bison openssl libreadline5 libreadline-dev curl git zlib1g zlib1g-dev libssl-dev libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev
     sudo apt-get install g++-multilib
-    echo "Installing ImageMagik"
+    say_green "Installing ImageMagik"
     sudo apt-get install imagemagick
-    echo "Installing Memcached"
+    say_green "Installing Memcached"
     sudo apt-get install memcached
-    echo "Installing GIT and SVN"
+    say_green "Installing GIT and SVN"
     sudo apt-get install git-core subversion
 }
 
