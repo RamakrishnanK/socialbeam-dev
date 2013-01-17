@@ -120,15 +120,15 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bcrypt-ruby
-  capistrano
-  execjs
-  jquery-rails
-  json
-  mysql2
+  bcrypt-ruby (~> 3.0.1)
+  capistrano (~> 2.14.1)
+  execjs (~> 1.4.0)
+  jquery-rails (~> 2.1.4)
+  json (~> 1.7.6)
+  mysql2 (~> 0.3.11)
   rails (= 3.2.11)
-  rvm-capistrano
+  rvm-capistrano (~> 1.2.7)
   sass-rails (~> 3.2.3)
-  therubyracer
+  therubyracer (~> 0.11.2)
   uglifier (>= 1.0.3)
   will_paginate (~> 3.0)
