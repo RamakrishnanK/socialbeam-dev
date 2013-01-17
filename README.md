@@ -67,38 +67,39 @@ both localbox and also an Amazon EC2 Instance Server if you have happen to have 
 ### NOTE for both local box and Amazon EC2 Setup
 * In both setups there is a part where Apache2 Module for Passenger is installed,during installation Passenger will promt you to copy three lines.
 * The lines will be something like these.
-     __LoadModule passenger_module ....text__
-     __PassengerRoot ....text__
-     __PassengerRuby ....text__
-* Make sure to copy the rthree lines generated while installation is goin on becuase they won't be generated again.
+  1.  __LoadModule passenger_module ....text__
+  2.  __PassengerRoot ....text__
+  3.  __PassengerRuby ....text__
+* Make sure to copy the three lines generated while installation step tell you to becuase they won't be generated again.
 * Once installation is finished copy the lines which is now in clipboard memory into your /etc/apache2/apache2.conf
 
 ### Virtual Host Setup in Localbox
 Once these lines the copied to apache2.conf go forward with creating virtual host on localbox
-* `sudo a2enmod rewrite`
+* Enable Apache2 Rewrites - execute `sudo a2enmod rewrite`
 * Add the below lines to a new sites-available file `sudo vim /etc/apache2/sites-available/dev.socialbeam.com`
-     	`<VirtualHost *:80>`
-	`(Change these lines to suit your project path)`
-	`RailsEnv development`
-	`ServerName dev.socialbeam.com`
-	`DocumentRoot /APP DIRECTORY PATH/public`
-	`</VirtualHost>`
-* Open `sudo vim /etc/hosts` and add **127.0.0.1   dev.socialbeam.com**
-* `sudo a2ensite dev.socialbeam.com`
-* `sudo service apache2 restart`
+	1. `<VirtualHost *:80>`
+	2. `(Change these lines to suit your project path)`
+	3. `RailsEnv development`
+	4. `ServerName dev.socialbeam.com`
+	5. `DocumentRoot /APP DIRECTORY PATH/public`
+	6. `</VirtualHost>`
+* Add site to hosts - execute `sudo vim /etc/hosts` and add **127.0.0.1   dev.socialbeam.com**
+* Add our new virtual Site to enabled sites - execute `sudo a2ensite dev.socialbeam.com`
+* Restart Apache - execute `sudo service apache2 restart`
 
 > **On localbox open dev.socialbeam.com , if everything installed fine then you should be able to see the Home Page of Socialbeam in your local box at dev.socialbeam.com**
       
 ### Virtual Host Setup in Amazon EC2 Instance
 * Please note Capistrano (cap deploy) from your local box must run without errors before you start doing this step.
 * Once these lines the copied to apache2.conf go forward with modifing the "default" Apache2 Virtual host on Amazon EC2 Instacne
-* `sudo a2enmod rewrite`
-* In the default file `sudo vim /etc/apache2/sites-available/default`
-     	`<VirtualHost *:80>`
-	`RailsEnv production`
-	`DocumentRoot /var/www/socialbeam_production/current/public`
-	`</VirtualHost>`
-* `sudo service apache2 restart`
+* Enable Apache2 Rewrites - execute `sudo a2enmod rewrite`
+* In the default file make changes, execute `sudo vim /etc/apache2/sites-available/default
+
+	1. `<VirtualHost *:80>`
+	2. `RailsEnv production`
+	3. `DocumentRoot /var/www/socialbeam_production/current/public`
+	4. `</VirtualHost>`
+* Restart Apache - `sudo service apache2 restart`
 
 > **If everything installed fine then you should be able to see the Home Page of Socialbeam on your Amazon EC2 Instance EndPoint URL or Elastic IP**
 
@@ -113,6 +114,6 @@ Once these lines the copied to apache2.conf go forward with creating virtual hos
 7. [Setting up Apache2+Passenger+Rails](http://raycoding.net/2012/12/22/creating-social-network-on-ruby-on-rails-day-7-setting-up-rails-apache-with-passenger/)
 8. [Source Control](http://raycoding.net/2012/12/22/creating-social-network-on-ruby-on-rails-day-8-source-control-on-git/)
 9. [User Profile Part 1](http://raycoding.net/2012/12/28/creating-social-network-on-ruby-on-rails-day-9-creating-user-profile-part-1/)
-10.[Messaging System in Socialbeam](http://raycoding.net/2013/01/05/creating-social-network-on-ruby-on-rails-day-10-creating-messaging-system-init/)
+10. [Messaging System in Socialbeam](http://raycoding.net/2013/01/05/creating-social-network-on-ruby-on-rails-day-10-creating-messaging-system-init/)
 
 **Tutorial on www.raycoding.net for more details.**
