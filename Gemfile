@@ -12,7 +12,7 @@ gem 'capistrano'
 gem "bcrypt-ruby", :require => "bcrypt"
 #Paginations
 gem 'will_paginate', '~> 3.0'
-
+gem 'rvm-capistrano'
 
 group :development, :test , :production do
   gem 'mysql2' #DB
