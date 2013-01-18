@@ -9,7 +9,7 @@
       </div>
     </br>
     <div id="loading" class="progress progress-striped active">
-      <div class="bar" style="width:100%;">Loading more...</div>
+      <div class="bar" style="width:100%;">click to load more</div>
     </div>
   </p>
   <span class="bottom-corners">
@@ -76,19 +76,19 @@ $(document).ready(function(){
 
   };
 
-  function nearBottomOfPage() {
-    return scrollDistanceFromBottom() <100;
-  }
-
-  function scrollDistanceFromBottom(argument) {
-    return pageHeight() - (window.pageYOffset + self.innerHeight);
-  }
-
-  function pageHeight() {
-    return Math.max(document.body.scrollHeight, document.body.offsetHeight);
-  }
-
-  setInterval(checkScroll,2000);
+  $("#loading").click(function() {
+  if (currentPage <= <%= @scribbles_streams.total_pages %>)
+    {
+        currentPage++;
+        $.get('/socialbeams/loadmorescribbles',{page:currentPage},
+         function(data,status){
+          $('#scribblesfeed').append(data)
+          return false
+        });
+    }else{
+      $('#loading').hide()
+    }
+  });
 
 });
 </script>
