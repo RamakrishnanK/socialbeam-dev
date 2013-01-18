@@ -22,11 +22,11 @@ set :deploy_to, "/var/www/socialbeam-production"
 set :rails_env, "production"
 
 
-set :domain, "ENV['EC2_SERVER_URL']"
+set :domain,ENV['EC2_SERVER_URL']
 role :app, domain
 role :web, domain
 role :db, domain, :primary => true
-server "184.73.240.241", :app, :roles=>:db,:primary => true
+server ENV['EC2_SERVER_URL'], :app, :roles=>:db,:primary => true
 
 #Cleaning up older releases > 5
 set :keep_releases, 5
