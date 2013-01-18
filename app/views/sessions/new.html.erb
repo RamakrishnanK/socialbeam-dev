@@ -1,12 +1,19 @@
-<%= form_tag login_user_path do %>
-  <p>
-    <%= label_tag :email %><br />
-    <%= text_field_tag :email, params[:email] %>
-  </p>
-  <p>
-    <%= label_tag :password %><br />
-    <%= password_field_tag :password %>
-  </p>
-  <p class="button"><%= submit_tag "Log in" %></p>
+<% if flash[:error] %>
+    <div class="alert alert-error"><%= flash[:error] %></div>
 <% end %>
-
+<%= form_tag login_user_path,:class=>"sb-login-form" do %>
+<p class="field">
+	<%= text_field_tag :email, params[:email],:placeholder=>"Email" %>
+	<i class="icon-user icon-large"></i>
+</p>
+<p class="field">
+	<%= password_field_tag :password,:placeholder=>"Password" %>
+	<i class="icon-lock icon-large"></i>
+<p class="field">
+	<%= password_field_tag :password,:placeholder=>"Password" %>
+	<i class="icon-lock icon-large"></i>
+</p>
+<p class="submit">
+	<button type="submit" name="submit"><i class="icon-arrow-right icon-large"></i></button>
+</p>
+<% end %>

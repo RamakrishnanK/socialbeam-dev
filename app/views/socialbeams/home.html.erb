@@ -57,25 +57,6 @@ $(document).ready(function(){
  return false;
 });
 
-  var checkScroll= function() {
-    if (currentPage <= <%= @scribbles_streams.total_pages %>)
-    {
-      if (nearBottomOfPage()) {
-        currentPage++;
-        $.get('/socialbeams/loadmorescribbles',{page:currentPage},
-         function(data,status){
-          $('#scribblesfeed').append(data)
-          return false
-        });
-      } else {
-        setTimeout(checkScroll,2000);
-      }
-    }else{
-      $('#loading').hide()
-    }
-
-  };
-
   $("#loading").click(function() {
   if (currentPage <= <%= @scribbles_streams.total_pages %>)
     {
