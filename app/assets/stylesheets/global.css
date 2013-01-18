@@ -15,6 +15,13 @@ textarea.sribble-status-text {
 	margin-bottom: 10px; 
 	height: 68px;
 }
+.brandimage
+{
+	height: 28px;
+	max-width: 120px;
+	vertical-align: middle;
+	border: 0;
+}
 .sribble-status-actions
 {
 	margin-left: 60px; 
