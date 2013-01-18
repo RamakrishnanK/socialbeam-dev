@@ -37,11 +37,10 @@ both localbox and also an Amazon EC2 Instance Server if you have happen to have 
 
 ### Local System Setup
 * Clone the project into some direcrtory you want on your system.
-* From the console enter the app directory and you will find a folder named `setup`
-* In that folder there is a script named `install_socialbeam.sh`
+* From the console enter the APP directory and if you `ls` APP directory you will find a folder named `setup`. In that folder there is a script named `install_socialbeam.sh`
 * Executing this Script with appropriate argument would install Socialbeam with System Setup for both local box and Amazon EC2 Instance
-* In colsole `cd` to the setup directory and execute `source ./install_socialbeam.sh`
-* Now once you have sourced the script all you need to execute is `setup localbox`
+* Give execute permission to the Script, from the APP directory, execute `chmod u+rwx ./setup/install_socialbeam.sh`
+* Once the execute permission is set execute `./setup/install_socialbeam.sh localbox`
 * Sit back as the installation script will process and get everything needed on your localbox for Socialbeam to run
 
 ### Amazon EC2 Instance Setup
@@ -51,15 +50,15 @@ both localbox and also an Amazon EC2 Instance Server if you have happen to have 
 * execute `cd /var/www/` and  execute `sudo chown -R ubuntu ./` and execute `sudo chgrp -R ubuntu ./`
 * The previous lines are important as we need to own the www directory for user `ubuntu` where we are going to deploy our App
 * Now copy the contents of `install_socialbeam.sh` and paste into some file on your server probably giving it the same name `install_socialbeam.sh`
-* In colsole `cd` to the directory where you created the file and execute `source ./install_socialbeam.sh`
-* Once sourced execute `setup amazonbox`. Now this installation is a two way step as you will notice as unlike local box we want to install RVM and RUBY and RAILS and every other thing SYSTEMWIDE
+* Give execute permission to the Script, from the directory execute `chmod u+rwx ./install_socialbeam.sh`
+* Once the execute permission is set execute `./install_socialbeam.sh amazonbox`. Now this installation is a two way step as you will notice as unlike local box we want to install RVM and RUBY and RAILS and every other thing SYSTEMWIDE
 * So Step One of this installation will install RVM systemwide and create a group named `rvm` in `/etc/group`
 * Open up /etc/group and right at the end you will find the group named `rvm` , after the colon(:) add `root,ubuntu`. Similarly right at the top for group named `root` add `ubuntu`. What we do here is add both `root` and `ubutu` Users to `rvm` group and add `ubuntu` User to `root` Group
 * Now you can log out and ssh login back again.
-* Once again `source install_socialbeam.sh` and execute `setup amazonbox` - This time you will notice it will be Step Two of the Installation.
-* Wait for the installation to finish.Once installation is over enter your mysql client `mysql -uroot -p` and create a DB named `socialbeam_storage_prod`.You can also create two other DB named `socialbeam_storage_dev` and `socialbeam_storage_test`. But we would only require the firts one as this is Production Mode.
-* Now logout and enter in your local box,migrate to the app directory. There you will find a script under config folder named `deploy.rb`
-* Open the Script `deploy.rb` and modify the git repo link to your git repo link which forked this project.Also there you a server config with an `IP`,ofcourse you would have replace that IP with the `Elastic IP` or `End Point URL` of your Amazon EC2 Instance. Finally after modifying the `IP` save the file and from app directory in console run `cap deploy:setup`
+* Once again execute `./install_socialbeam.sh amazonbox` - This time you will notice it will be Step Two of the Installation.
+* Wait for the installation to finish. Once installation is over enter your mysql client `mysql -uroot -p` and create a DB named `socialbeam_storage_prod`.You can also create two other DB named `socialbeam_storage_dev` and `socialbeam_storage_test`. But we would only require the firts one as this is Production Mode.
+* Now logout and enter in your local box,migrate to the app directory. There you will find a script under config folder named `deploy.rb`. Inside it you will find two Environment Variable which I have in my Server Profile, either replace that proper links for yourself or create similar Environment Variable.
+* Open the Script `deploy.rb` and modify the Environment Variable GIT_REPO_LINK to your Git Link(fork this project and paste that link).Environment Variable EC2_SERVER_URL replace that with the `Elastic IP` or `End Point URL` of your Amazon EC2 Instance. Finally after modifying save the file and from app directory in console run `cap deploy:setup`
 * If "cap deploy:setup" is successful we are good to go with running `cap deploy`, wait till process deployment completes.
 * Pease note I have considered you the added the ssh keys in your Server to access GIT, else cap deploy won't work)
 
