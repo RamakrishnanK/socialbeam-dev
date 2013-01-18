@@ -7,15 +7,17 @@
 #Phusion Passenger version 3.0.19
 #Apache/2.2.20
 #For more details on RVM -Capistrano integration see here https://rvm.io/integration/capistrano/
- #Make sure to install 'rvm-capistrano' in deployment server before 
+#Make sure to install 'rvm-capistrano' in deployment server before 
+
+#Note : Put EC2_SERVER_URL (your ENd Point URL or Elastic IP to Amazon EC2 Box) and GIT_REPO_URL in your ~/.bashrc and source ~/.bashrc before running
 
 set :rvm_ruby_string, '1.9.2'  #global in deployment server
 set :rvm_type, :system #system-wide RVM installation in server
 require "rvm/capistrano"
 set :application, "socialbeam"
 set :scm, :git
-set :repository, "git@github.com:raycoding/socialbeam-dev.git"
-set :scm_passphrase, ""
+set :repository,ENV['GIT_REPO_URL']
+set :scm_passphrase,""
 set :branch, "socialbeam-aws"
 set :user, "ubuntu"
 set :deploy_to, "/var/www/socialbeam-production"
