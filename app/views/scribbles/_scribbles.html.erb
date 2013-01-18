@@ -10,7 +10,7 @@
       <small><%= scribble.posted_by %></small>
     </blockquote>
     <div class="scribbletime">
-      <label class="label">created <%= TimelineBeautify.beauty_time(scribble.created_at) %></label>
+      <label class="label">posted <%= TimelineBeautify.beauty_time(scribble.created_at) %></label>
       <label class="label"><%= scribble.posted_comments.count %> comments</label>
       <a href="" id="<%= scribble.id %>" name="up" class="votes">
         <i class="icon-thumbs-up"></i><%= scribble.ups %> likes</a>

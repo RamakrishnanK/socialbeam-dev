@@ -13,7 +13,7 @@
             <%= comment.body%>
             </div>
 			<div style=" padding-top:3px;">
-				<span><%= comment.created_at.strftime("on %m/%d/%Y at %I:%M%p")%></span>&nbsp;
+				<label class="label"><%= TimelineBeautify.beauty_time(comment.created_at) %></label>&nbsp;
 				<span id=""><a href=""><i class="icon-thumbs-up"></i></a></span>&nbsp;
 				<span id=""><a href=""><i class="icon-thumbs-down"></i></a></span>&nbsp;
 				<% if current_user.beamer_id == comment.commentor_id %>
