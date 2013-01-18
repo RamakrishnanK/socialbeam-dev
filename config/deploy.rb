@@ -22,7 +22,7 @@ set :deploy_to, "/var/www/socialbeam-production"
 set :rails_env, "production"
 
 
-set :domain, '184.73.240.241'
+set :domain, "ENV['EC2_SERVER_URL']"
 role :app, domain
 role :web, domain
 role :db, domain, :primary => true
