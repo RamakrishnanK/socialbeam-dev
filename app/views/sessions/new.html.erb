@@ -1,5 +1,11 @@
+</br>
+</br>
+</br>
 <% if flash[:error] %>
-    <div class="alert alert-error"><%= flash[:error] %></div>
+    <div class="alert alert-error">
+    	<button type="button" class="close" data-dismiss="alert">&times;</button>
+    	<%= flash[:error] %>
+    </div>
 <% end %>
 <%= form_tag login_user_path,:class=>"sb-login-form" do %>
 <p class="field">
@@ -9,10 +15,6 @@
 <p class="field">
 	<%= password_field_tag :password,:placeholder=>"Password" %>
 	<i class="icon-lock icon-large"></i>
-<p class="field">
-	<%= password_field_tag :password,:placeholder=>"Password" %>
-	<i class="icon-lock icon-large"></i>
-</p>
 <p class="submit">
 	<button type="submit" name="submit"><i class="icon-arrow-right icon-large"></i></button>
 </p>
