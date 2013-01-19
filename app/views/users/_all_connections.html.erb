@@ -1,9 +1,11 @@
 <h1>All Beamers in Socialbeam</h1>
 <div>	
 		<% all_connections.each do |beamer| %>
-			<%= link_to user_path(beamer.beamer_id) do %>
-				<%= "#{beamer.first_name} #{beamer.last_name}" %>
-			</br>
+		    <% unless beamer==current_user %>
+				<%= link_to user_path(beamer.beamer_id) do %>
+				<%= "#{beamer.first_name} #{beamer.last_name}" %> <b><%= link_to 'follow', follow_path(:beamer_id => beamer.beamer_id) %></b>
+				</br>
+				<% end %>
 			<% end %>	
 		<% end %>
 </div>

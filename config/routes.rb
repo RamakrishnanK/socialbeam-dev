@@ -30,8 +30,9 @@ Socialbeam::Application.routes.draw do
 
   #Users
   get "signup" => "users#new", :as => "signup"
-  
-
+  match "/myconnections/:beamer_id" => "users#showconnections", :as=>"myconnections"
+  match "users/:beamer_id/follow" => "friends#create" , :as => 'follow'
+  match "users/:beamer_id" => "users#show" , :as => 'profile'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

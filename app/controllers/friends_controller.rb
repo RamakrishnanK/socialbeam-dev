@@ -26,14 +26,14 @@ end
 
 def create
   @user = current_user
-  @friend = User.find(params[:beamer_id])
+  @friend = User.find_by_beamer_id(params[:beamer_id])
   params[:friendship] = {:beamer_id => @user.beamer_id, :friend_beamer_id => @friend.beamer_id }
   @friendship = Friendship.create(params[:friendship])
   if @friendship.save
     #Notification.create(:user_id=>@friend.id, :notification_type=>"follower", :object_id=>@user.id)
     redirect_to :back
   else
-    redirect_to root_url
+    redirect_to :back
   end
 end
 

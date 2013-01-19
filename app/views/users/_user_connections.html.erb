@@ -1,0 +1,6 @@
+<% if current_user %>
+<%= render :partial => "followers", :locals => { :user => user, :followers => followers } %> 
+<%= render :partial => "following", :locals => { :user => user, :following => following } %>
+<%= render :partial => "all_connections", :locals => {:all_connections =>all_connections } %>
+<% end %>
+

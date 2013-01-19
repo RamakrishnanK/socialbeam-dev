@@ -2,7 +2,7 @@
 <div>	
 	<% unless @followers.size == 0 %>
 		<% @followers.each do |follower| %>
-			<% link_to follower.user do %>
+			<%= link_to user_path(follower.user.beamer_id) do %>
 				<%= "#{follower.first_name} #{follower.last_name}" %>
 			<% end %>	
 		<% end %>

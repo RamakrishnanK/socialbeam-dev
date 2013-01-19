@@ -2,7 +2,7 @@
 <div>	
 	<% unless following.count == 0 %>
 		<% following.each do |user| %>
-			<% link_to user do %>
+			<%= link_to user_path(user.beamer_id) do %>
 				<%= "#{user.first_name} #{user.last_name}" %>
 			<% end %>	
 		<% end %>
