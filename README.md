@@ -1,8 +1,8 @@
 # Social Network Development Project in Rails - SOCIALBEAM![Socialbeam](https://s3.amazonaws.com/socialbeam-repo/images/sb_large.png "Socialbeam")
 Socialbeam is a Open Source Development Project for building a Social Network. In its early stages of development phase Socialbeam aims to implement
 the primary set of features that a Social Network consists of. The structure of the platform Socialbeam hopefully will implement most if not all social network features that we see around presently. 
-Socialbeam is concurrently developed on localbox running Ubuntu 11.10 and Amazon EC2 Instance Box. Please find below the guide to setup 
-both localbox and also an Amazon EC2 Instance Server if you have happen to have one. The reason why deployment is concurrent in both local and server becuase it helps me understands the server management and load better and therfore build the system accordingly.
+Socialbeam is concurrently developed on localbox running Ubuntu 11.10 and deployed simultaneously on Amazon EC2 Instance Server Box. Please find below the guide to setup 
+both localbox and also an Amazon EC2 Instance Server if you happen to have one.
 
 ## Features implemented
 1. User Base (Beamers)
@@ -46,8 +46,8 @@ both localbox and also an Amazon EC2 Instance Server if you have happen to have 
 ### Amazon EC2 Instance Setup
 * Fork the project in your Github Repository and add ssh-keys for your Amazon EC2 Instance and Localbox for your Git Account.
 * If you alread have an Amazon EC2 Instance running on Ubuntu 11.10 64Bit then the please read the following lines to get your system running on EC2
-* ssh into your EC2 instance with default user `ubuntu` provided by Amazon for EC2 instances
-* execute `cd /var/www/` and  execute `sudo chown -R ubuntu ./` and execute `sudo chgrp -R ubuntu ./`
+* ssh into your Amazon EC2 instance with default user `ubuntu` provided by Amazon for EC2 instances. Make sure you login using `ubuntu` User.
+* Execute `cd /var/www/` and  execute `sudo chown -R ubuntu ./` and execute `sudo chgrp -R ubuntu ./`
 * The previous lines are important as we need to own the www directory for user `ubuntu` where we are going to deploy our App
 * Now copy the contents of `install_socialbeam.sh` and paste into some file on your server probably giving it the same name `install_socialbeam.sh`
 * Give execute permission to the Script, from the directory execute `chmod u+rwx ./install_socialbeam.sh`
@@ -56,11 +56,11 @@ both localbox and also an Amazon EC2 Instance Server if you have happen to have 
 * Open up /etc/group and right at the end you will find the group named `rvm` , after the colon(:) add `root,ubuntu`. Similarly right at the top for group named `root` add `ubuntu`. What we do here is add both `root` and `ubutu` Users to `rvm` group and add `ubuntu` User to `root` Group
 * Now you can log out and ssh login back again.
 * Once again execute `./install_socialbeam.sh amazonbox` - This time you will notice it will be Step Two of the Installation.
-* Wait for the installation to finish. Once installation is over enter your mysql client `mysql -uroot -p` and create a DB named `socialbeam_storage_prod`.You can also create two other DB named `socialbeam_storage_dev` and `socialbeam_storage_test`. But we would only require the firts one as this is Production Mode.
-* Now logout and enter in your local box,migrate to the app directory. There you will find a script under config folder named `deploy.rb`. Inside it you will find two Environment Variable which I have in my Server Profile, either replace that proper links for yourself or create similar Environment Variable.
-* Open the Script `deploy.rb` and modify the Environment Variable GIT_REPO_LINK to your Git Link(fork this project and paste that link).Environment Variable EC2_SERVER_URL replace that with the `Elastic IP` or `End Point URL` of your Amazon EC2 Instance. Finally after modifying save the file and from app directory in console run `cap deploy:setup`
-* If "cap deploy:setup" is successful we are good to go with running `cap deploy`, wait till process deployment completes.
-* Pease note I have considered you the added the ssh keys in your Server to access GIT, else cap deploy won't work)
+* Wait for the installation to finish. Once installation is over enter your mysql client `mysql -uroot -p` and create a DB named `socialbeam_storage_prod`.You can also create two other DB named `socialbeam_storage_dev` and `socialbeam_storage_test`. But we would only require the first as this would be Production mode.
+* Now logout and enter in your local box,migrate to the app directory. There you will find a script under config folder named `deploy.rb`. Inside it you will find two Environment Variable which I have defined in my Server's /etc/profile, either replace with proper links or create similar Environment Variables in your Amazon EC2 Server's /etc/profile and source it.
+* If you choose to modify then open the script `deploy.rb` and change ENV['GIT_REPO_LINK'] to your Git Link(fork this project in your Account and paste that link) and for ENV['EC2_SERVER_URL'] replace that with the `Elastic IP` or `End Point URL` of your Amazon EC2 Server Instance provided by AWS. Save the file and from APP directory in console run `cap deploy:setup`
+* If "cap deploy:setup" is successful we are good to go with running `cap deploy:cold` which will do a mock up deploy. If that succeeds too then eventually execute `cap deploy`, wait till process deployment completes.
+* Pease note I have considered you the added the ssh keys in your Amazon EC2 Server Box to access GIT, else Capistrano will fail authentication when it try to access the GIT from Server box during deployment.
 
 
 ### NOTE for both local box and Amazon EC2 Setup
@@ -72,28 +72,33 @@ both localbox and also an Amazon EC2 Instance Server if you have happen to have 
 * Make sure to copy the three lines generated while installation step tell you to becuase they won't be generated again.
 * Once installation is finished copy the lines which is now in clipboard memory into your /etc/apache2/apache2.conf
 
-### Virtual Host Setup in Localbox
-Once these lines the copied to apache2.conf go forward with creating virtual host on localbox
-* Enable Apache2 Rewrites - execute `sudo a2enmod rewrite`
-* Add the below lines to a new sites-available file `sudo vim /etc/apache2/sites-available/dev.socialbeam.com`
-	1. `<VirtualHost *:80>`
-	2. `(Change these lines to suit your project path)`
-	3. `RailsEnv development`
-	4. `ServerName dev.socialbeam.com`
-	5. `DocumentRoot /APP DIRECTORY PATH/public`
-	6. `</VirtualHost>`
-* Add site to hosts - execute `sudo vim /etc/hosts` and add **127.0.0.1   dev.socialbeam.com**
-* Add our new virtual Site to enabled sites - execute `sudo a2ensite dev.socialbeam.com`
-* Restart Apache - execute `sudo service apache2 restart`
+###Running Socialbeam on localbox 
+* There two ways you can run Socialbeam on your local box
+
+  1. Running with default WebRick Server provided by Rails
+          * Migrate into the APP directory and make sure you ran rake db:create and rake db:migrate before executing `rails server -p 3333`.
+          * You should be able to see Socialbeam running on localhost:3333/ or whichever port you choose to pass
+  2. Running with Apache2 Server - Setting up virtual host
+	  * Enable Apache2 Rewrites - execute `sudo a2enmod rewrite`
+	  * Add the below lines to a new sites-available file `sudo vim /etc/apache2/sites-available/dev.socialbeam.com`
+		1. `<VirtualHost *:80>`
+		2. `(Change these lines to suit your project path)`
+		3. `RailsEnv development`
+		4. `ServerName dev.socialbeam.com`
+		5. `DocumentRoot /APP DIRECTORY PATH/public`
+		6. `</VirtualHost>`
+	  * Add site to hosts - execute `sudo vim /etc/hosts` and add **127.0.0.1   dev.socialbeam.com**
+	  * Add our new virtual Site to enabled sites - execute `sudo a2ensite dev.socialbeam.com`
+	  * Restart Apache - execute `sudo service apache2 restart`
 
 > **On localbox open dev.socialbeam.com , if everything installed fine then you should be able to see the Home Page of Socialbeam in your local box at dev.socialbeam.com**
       
-### Virtual Host Setup in Amazon EC2 Instance
+### Running Socialbeam in Amazon EC2 Server Box - Apache2 Server
 * Please note Capistrano (cap deploy) from your local box must run without errors before you start doing this step.
+* Do not run `cap deploy` command from local box before creating the necessary DB else `cap deploy` command will fail to run migrations.
 * Once these lines the copied to apache2.conf go forward with modifing the "default" Apache2 Virtual host on Amazon EC2 Instacne
 * Enable Apache2 Rewrites - execute `sudo a2enmod rewrite`
 * In the default file make changes, execute `sudo vim /etc/apache2/sites-available/default
-
 	1. `<VirtualHost *:80>`
 	2. `RailsEnv production`
 	3. `DocumentRoot /var/www/socialbeam_production/current/public`
