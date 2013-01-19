@@ -1,0 +1,12 @@
+<h1>followers</h1>
+<div>	
+	<% unless followers.size == 0 %>
+		<% followers.each do |follower| %>
+			<% link_to follower.user do %>
+				<%= "#{follower.first_name} #{follower.last_name}" %>
+			<% end %>	
+		<% end %>
+	<% else %>
+		No Followers Yet
+	<% end %>
+</div>

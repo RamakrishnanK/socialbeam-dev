@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   before_save :encrypt_password
   before_save :create_unique_profile_id
   before_save :create_beamer_id
+  
   has_many :sent_messages,
   :class_name => 'Message',
   :primary_key=>'beamer_id',
@@ -19,6 +20,10 @@ class User < ActiveRecord::Base
   :foreign_key => 'recepient_id',
   :order => "messages.created_at DESC",
   :conditions => ["messages.recepient_deleted = ?", false]
+
+  # friendships
+  has_many :friends, :through => :friendships
+  has_many :friendships, :dependent => :destroy,:primary_key=>'beamer_id',:foreign_key=>'beamer_id'
 
 
   validates_confirmation_of :password , :message => "Passwords donot match."

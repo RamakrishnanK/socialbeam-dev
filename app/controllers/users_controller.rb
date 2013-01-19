@@ -15,4 +15,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+      @user = User.find_by_beamer_id(params[:id])
+      @following = @user.friends
+      @followers = Friendship.find(:all, :conditions => {:friend_beamer_id => @user.beamer_id}, :include => :user )
+      @all_connections=User.all
+  end
+
 end

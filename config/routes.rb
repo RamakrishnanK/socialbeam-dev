@@ -9,12 +9,13 @@ Socialbeam::Application.routes.draw do
         post 'delete_multiple'
       end
     end
+    resources :friends
   end
   resource :socialbeams do
     collection do
-        get 'home'
-        get 'loadmorescribbles'
-      end
+      get 'home'
+      get 'loadmorescribbles'
+    end
   end
   resources :sessions
   resources :newsfeeds
@@ -27,8 +28,9 @@ Socialbeam::Application.routes.draw do
   get "logout_user" => "sessions#destroy", :as => "logout_user"
   post "login_user" => "sessions#new", :as => "login_user"
 
- #Users
- get "signup" => "users#new", :as => "signup"
+  #Users
+  get "signup" => "users#new", :as => "signup"
+  
 
 
   # The priority is based upon order of creation:

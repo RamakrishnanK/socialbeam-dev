@@ -1,0 +1,15 @@
+<% if current_user %>
+  	<% if user == current_user %>
+ 		<b><%#= link_to 'edit', url_for(:controller => 'users', :action => 'edit', :id => user.id) %>Edit Profile</b>
+	<% else %>
+		<% if current_user.friends.include?(user)  %>
+			<b><%= link_to 'unfollow', user_friend_path(:beamer_id => current_user.beamer_id, :friend_beamer_id => user.beamer_id), :method => :delete %></b>
+		<% else %>
+			<b><%#= link_to 'follow', new_user_friend_path(:id => user.id) %>Follow</b>
+		<% end %>
+	<% end %>
+<% end %>
+<%= render :partial => "followers", :locals => { :user => user, :followers => followers } %> 
+<%= render :partial => "following", :locals => { :user => user, :following => following } %>
+<%= render :partial => "all_connections", :locals => {:all_connections =>all_connections } %>
+

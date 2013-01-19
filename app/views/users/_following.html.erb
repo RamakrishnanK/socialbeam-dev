@@ -1,0 +1,12 @@
+<h1>following</h1>
+<div>	
+	<% unless following.count == 0 %>
+		<% following.each do |user| %>
+			<% link_to user do %>
+				<%= "#{user.first_name} #{user.last_name}" %>
+			<% end %>	
+		<% end %>
+	<% else %>
+		Not Following Anyone
+	<% end %>
+</div>

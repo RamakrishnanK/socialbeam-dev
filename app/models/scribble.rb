@@ -2,6 +2,7 @@ include Scrubber
 class Scribble < ActiveRecord::Base
   attr_accessible :post, :posted_by, :posted_by_uid,:scribble_id
   before_save :create_scribble_id
+  
   has_many :posted_comments,
   :class_name => 'ScribbleComment',
   :primary_key=>'scribble_id',
