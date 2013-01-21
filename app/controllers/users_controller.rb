@@ -23,7 +23,10 @@ class UsersController < ApplicationController
       @user = User.find_by_beamer_id(params[:beamer_id])
       @following = @user.friends
       @followers = Friendship.find(:all, :conditions => {:friend_beamer_id => @user.beamer_id}, :include => :user )
-      @all_connections=User.all
+      @all_connections=User.joins('LEFT OUTER JOIN friendships ON (friendships.beamer_id !=users.beamer_id AND friendships.friend_beamer_id !=users.beamer_id)')
+      #@all_connections=User.all
+      @confirm_requests=Friendship.find(:all,:conditions=>{:requested_to=>@user.beamer_id,:status=>"waiting"},:include=>:user)
+      @sent_requests=Friendship.find(:all,:conditions=>{:beamer_id=>@user.beamer_id,:status=>"waiting"},:include=>:friend)
   end
 
 end
