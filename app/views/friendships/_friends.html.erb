@@ -1,0 +1,15 @@
+<h2>Your Friends</h2>
+<ol>
+	<% @user.friendship.each do |friendship| %>
+	<li>
+		<%=link_to "#{friendship.friend.full_name}",user_path(friendship.friend.beamer_id) %>, 
+		<%= friendship.status %>
+		<% if friendship.status == "requested" %>
+		(
+		<%= link_to "Accept",:controller => :friendship,:action => :accept,:beamer_id =>"#{friendship.friend.beamer_id}" %> |
+		<%= link_to "Reject",:controller => :friendship,:action => :reject,:beamer_id =>"#{friendship.friend.beamer_id}" %>
+		)
+		<% end %>
+	</li>
+	<% end %>
+</ol>

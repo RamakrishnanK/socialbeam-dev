@@ -1,8 +1,5 @@
 <% if current_user %>
-<%#= render :partial => "friends/followers", :locals => { :user => user, :followers => followers } %> 
-<%#= render :partial => "friends/following", :locals => { :user => user, :following => following } %>
-<%= render :partial => "friends/pending_confirm_requests", :locals => {:confirm_requests =>confirm_requests } %>
-<%= render :partial => "friends/pending_sent_requests", :locals => {:sent_requests =>sent_requests } %>
-<%= render :partial => "friends/all_connections", :locals => {:all_connections =>all_connections } %>
+<%= render :partial => "friendships/friends" %>
+<%= render :partial => "friendships/all_connections", :locals => {:all_connections =>all_connections } %>
 <% end %>
 

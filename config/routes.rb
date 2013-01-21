@@ -9,7 +9,6 @@ Socialbeam::Application.routes.draw do
         post 'delete_multiple'
       end
     end
-    resources :friends
   end
   resource :socialbeams do
     collection do
@@ -32,8 +31,8 @@ Socialbeam::Application.routes.draw do
   get "signup" => "users#new", :as => "signup"
   match "/myconnections/:beamer_id" => "users#showconnections", :as=>"myconnections"
   match "users/:beamer_id" => "users#show" , :as => 'profile'
-  match "users/:beamer_id/friend_request" => "friends#create" , :as => 'friend_request'
-  match "users/:beamer_id/reject_friend_request" => "friends#destroy" , :as => 'reject_friend_request'
+
+  match "friendships/:beamer_id" => "friendships#req", :as=>"addfriend"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -87,5 +86,4 @@ Socialbeam::Application.routes.draw do
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id))(.:format)'
 end

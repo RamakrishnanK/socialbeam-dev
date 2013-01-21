@@ -22,9 +22,7 @@ class User < ActiveRecord::Base
   :conditions => ["messages.recepient_deleted = ?", false]
 
   # friendships
-  has_many :friends, :through => :friendships
-  has_many :friendships, :dependent => :destroy,:primary_key=>'beamer_id',:foreign_key=>'beamer_id'
-
+  has_many :friendship,:primary_key=>"beamer_id",:foreign_key=>'beamer_id'
 
   validates_confirmation_of :password , :message => "Passwords donot match."
   validates_presence_of :password, :message => "Please Enter a Password"
@@ -57,6 +55,10 @@ class User < ActiveRecord::Base
       self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
     end
   end
+  #Return Full Name Helper Method
+  def full_name
+    return "#{self.first_name} #{self.last_name}"
+  end
 
   def unread_messages?
     unread_message_count > 0 ? true : false
@@ -65,5 +67,5 @@ class User < ActiveRecord::Base
   # Returns the number of unread messages for this user
   def unread_message_count
     eval 'messages.count(:conditions => ["recepient_id = ? AND read_at IS NULL", self.beamer_id])'
-  end      
+  end
 end

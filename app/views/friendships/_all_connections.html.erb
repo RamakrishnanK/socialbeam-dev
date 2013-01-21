@@ -1,0 +1,22 @@
+<h2>Beamers in Socialbeam</h2>
+<div>	
+	<ul>
+		<% all_connections.each do |beamer| %>
+		<% unless beamer==current_user %>
+		<li>
+			<%= link_to user_path(beamer.beamer_id) do %>
+			<%= "#{beamer.first_name} #{beamer.last_name}" %> 
+			<b>
+				<% if Friendship.are_friends(current_user.beamer_id,beamer.beamer_id) %>(you are friends)
+				<% else %>
+				(
+				<%= link_to "Add Friend",addfriend_path(:beamer_id => beamer.beamer_id) %>
+				)
+				<% end %>
+			</b>
+			<% end %>
+			<% end %>
+		</li>	
+		<% end %>
+	</ul>
+</div>
