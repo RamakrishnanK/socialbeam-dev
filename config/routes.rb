@@ -32,7 +32,16 @@ Socialbeam::Application.routes.draw do
   match "/myconnections/:beamer_id" => "users#showconnections", :as=>"myconnections"
   match "users/:beamer_id" => "users#show" , :as => 'profile'
 
-  match "friendships/:beamer_id" => "friendships#req", :as=>"addfriend"
+  resources :friendships do
+    collection do
+      get 'req',:as=>"addfriend"
+      get 'accept',:as=>"accept_fr"
+      get 'reject',:as=>"reject_fr"
+    end
+  end
+  #match "friendships/:beamer_id" => "friendships#req", :as=>"addfriend"
+  #match "friendships/:beamer_id" => "friendships#accept", :as=>"accept_fr"
+  #match "friendships/:beamer_id" => "friendships#reject", :as=>"reject_fr"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

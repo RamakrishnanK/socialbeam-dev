@@ -395,34 +395,16 @@ a.bttn {
 /* Styled SB Navigation 5 Tabs*/
 
 .sbnav1 {
-	background: #444;
-	border-bottom: 8px solid #E6E2DF;
+	padding-top:20opx;
+	background: #e6e6e6;
 	overflow: hidden;
 	position: relative;
 }
-.sbnav1:after {
-	content: "";
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	height: 2px;
-	background: white; 
-}
 .sbnav1 ul {
-	background: -moz-linear-gradient(left,
-		#444 0%,
-		#444 50%,
-		#41d05f 100%);
-	background: -webkit-gradient(linear, left top, right top,
-		color-stop(0%,#444),
-		color-stop(50%,#444),
-		color-stop(50%,#41d05f),
-		color-stop(100%,#41d05f));
 	list-style: none;
 	overflow: hidden;
-	padding: 0 0 0 20px;
-	width: 97%;
+	padding: 20px 0 20px 0;
+	width: 100%;
 }
 .sbnav1 li {
 	display: inline;
@@ -432,7 +414,7 @@ a.bttn {
 	display: block;
 	float: left;
 	font-family: "myriad-pro-1","myriad-pro-2", HelveticaNeue, Helvetica, Arial, Sans-Serif;
-	font-size: 22px;
+	font-size: 16px;
 	padding: 12px 0;
 	text-decoration: none;
 	text-align: center;
@@ -464,21 +446,6 @@ a.bttn {
 }   
 .sbnav1 .a-tab5 {
 	background: #41d05f;
-}
-.home .sbnav1 {
-	border-bottom-color: #ff8400;
-}
-.forums .sbnav1 {
-	border-bottom-color: #e42b2b;
-}
-.videos .sbnav1 {
-	border-bottom-color: #a800ff;
-}
-.downloads .sbnav1 {
-	border-bottom-color: #49a7f3;
-}
-.snippets .sbnav1 {
-	border-bottom-color: #41d05f;
 }
 .sbnav1 li:hover a {
 	width: 24%;

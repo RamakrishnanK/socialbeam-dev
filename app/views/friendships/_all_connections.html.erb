@@ -4,16 +4,11 @@
 		<% all_connections.each do |beamer| %>
 		<% unless beamer==current_user %>
 		<li>
-			<%= link_to user_path(beamer.beamer_id) do %>
-			<%= "#{beamer.first_name} #{beamer.last_name}" %> 
-			<b>
-				<% if Friendship.are_friends(current_user.beamer_id,beamer.beamer_id) %>(you are friends)
+			<%= link_to "#{beamer.first_name} #{beamer.last_name}", user_path(beamer.beamer_id) %>
+				<% if Friendship.are_friends(current_user.beamer_id,beamer.beamer_id) %>
+				 <label class="label">Friend</label>
 				<% else %>
-				(
-				<%= link_to "Add Friend",addfriend_path(:beamer_id => beamer.beamer_id) %>
-				)
-				<% end %>
-			</b>
+				 <%= link_to "Add Friend",addfriend_friendships_path(:beamer_id => beamer.beamer_id) %>
 			<% end %>
 			<% end %>
 		</li>	

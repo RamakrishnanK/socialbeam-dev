@@ -6,8 +6,15 @@ class Friendship < ActiveRecord::Base
 
 	def self.are_friends(user, friend)
 		return false if user == friend
-		return true unless find_by_beamer_id_and_friend_beamer_id(user,friend).nil?
-		return true unless find_by_beamer_id_and_friend_beamer_id(friend,user).nil?
+		return true unless find_by_beamer_id_and_friend_beamer_id_and_status(user,friend,"accepted").nil?
+		return true unless find_by_beamer_id_and_friend_beamer_id_and_status(friend,user,"accepted").nil?
+		false
+	end
+
+	def self.are_friends_pending(user, friend)
+		return false if user == friend
+		return true unless find_by_beamer_id_and_friend_beamer_id_and_status(user,friend,"pending").nil?
+		return true unless find_by_beamer_id_and_friend_beamer_id_and_status(friend,user,"requested").nil?
 		false
 	end
 
@@ -23,8 +30,8 @@ class Friendship < ActiveRecord::Base
 	end
 
 	def self.accept(user, friend)
-		f1 = find_by_beamer_id_and_friend_beamer_id(user, friend)
-		f2 = find_by_beamer_id_and_friend_beamer_id(friend, user)
+		f1 = find_by_beamer_id_and_friend_beamer_id(user.beamer_id, friend.beamer_id)
+		f2 = find_by_beamer_id_and_friend_beamer_id(friend.beamer_id, user.beamer_id)
 		if f1.nil? or f2.nil?
 			return false
 		else
@@ -37,8 +44,8 @@ class Friendship < ActiveRecord::Base
 	end
 
 	def self.reject(user, friend)
-		f1 = find_by_beamer_id_and_friend_beamer_id(user, friend)
-		f2 = find_by_beamer_id_and_friend_beamer_id(friend, user)
+		f1 = find_by_beamer_id_and_friend_beamer_id(user.beamer_id, friend.beamer_id)
+		f2 = find_by_beamer_id_and_friend_beamer_id(friend.beamer_id, user.beamer_id)
 		if f1.nil? or f2.nil?
 			return false
 		else

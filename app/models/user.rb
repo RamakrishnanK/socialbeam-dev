@@ -23,6 +23,22 @@ class User < ActiveRecord::Base
 
   # friendships
   has_many :friendship,:primary_key=>"beamer_id",:foreign_key=>'beamer_id'
+  has_many :friends, 
+           :through => :friendship,
+           :conditions => "status = 'accepted'", 
+           :order => :first_name
+
+  has_many :requested_friends, 
+           :through => :friendship, 
+           :source => :friend,
+           :conditions => "status = 'requested'", 
+           :order => :created_at
+
+  has_many :pending_friends, 
+           :through => :friendship, 
+           :source => :friend,
+           :conditions => "status = 'pending'", 
+           :order => :created_at
 
   validates_confirmation_of :password , :message => "Passwords donot match."
   validates_presence_of :password, :message => "Please Enter a Password"

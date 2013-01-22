@@ -1,6 +1,6 @@
-<h2>Your Friends</h2>
+<h2>Friend Pending</h2>
 <ol>
-	<% @user.friends.each do |friend| %>
+	<% @user.pending_friends.each do |friend| %>
 	<li>
 		<%=link_to "#{friend.full_name}",user_path(friend.beamer_id) %> 
 	</li>
