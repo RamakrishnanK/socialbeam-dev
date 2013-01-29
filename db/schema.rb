@@ -11,12 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130119215422) do
+ActiveRecord::Schema.define(:version => 20130122090328) do
+
+  create_table "aspects", :force => true do |t|
+    t.string   "aspect_id"
+    t.string   "aspect_code"
+    t.string   "display_aspect_text"
+    t.string   "parent_aspect_code",  :default => "friends"
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+  end
 
   create_table "friendships", :force => true do |t|
     t.string   "beamer_id"
     t.string   "friend_beamer_id"
-    t.string   "requested_to"
     t.string   "status"
     t.datetime "created_at"
   end

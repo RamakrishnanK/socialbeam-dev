@@ -1,8 +1,95 @@
 <h2>Your Friends</h2>
-<ol>
+<tr>
 	<% @user.friends.each do |friend| %>
-	<li>
-		<%=link_to "#{friend.full_name}",user_path(friend.beamer_id) %> 
-	</li>
+	<%=link_to "#{friend.full_name}",user_path(friend.beamer_id) %> 
 	<% end %>
-</ol>
+</tr>
+<div class='socialbeam_books'>  
+
+	<div class="sbook_cover" id="friends_page">
+
+		<div class="sbook_pages" style="left: 3px; width: 862px;box-shadow:0 1px 5px 0 #0A2851"></div>
+		<div class="sbook_pages" style="left: 5px; width: 858px;"></div>
+		<div class="sbook_pages" style="left: 7px; width: 854px;"></div>
+		<div id="friend_page_rows" class="sbook_pages" style="left: 9px; width: 850px;">
+			<div class="sbpage_left">
+				<div class="friends_message">Click On a Letter To Load Friends</div>
+			</div>
+			<div class="sbpage_bind"><span class="top"></span><span class="bottom"></span></div>
+			<div class="sbpage_right"></div>
+
+		</div>
+	</div> 
+	<div  id="startup_page">
+		<div class="sb_cover_outer">
+
+			<div class="sb_cover_letters">
+				<div class="sb_cover_letter">A</div>
+				<div class="sb_cover_letter" style="background: #8791d9;">B</div>
+				<div class="sb_cover_letter" style="background: #3bcbd0;">C</div>
+				<div class="sb_cover_letter" style="background: #da5c83;">D</div>
+			</div>
+
+			<div class="sbook_cover_inner">
+				<div class="sbook_cover_bar"></div>
+				<div class="sbook_cover_img"><img src="/assets/sb_large.png" /></div>
+				<div class="sbook_cover_title">Tweet Book</div>
+
+				<div class="sb_cover_open"><div class="arrow_left"></div></div>
+			</div>
+		</div>
+	</div>
+	<div id="profile_page" class="sbook_cover">
+
+		<div class="sbook_pages" style="left: 3px; width: 862px;box-shadow:0 1px 5px 0 #0A2851"></div>
+		<div class="sbook_pages" style="left: 5px; width: 858px;"></div>
+		<div class="sbook_pages" style="left: 7px; width: 854px;"></div>
+		<div class="sbook_pages" style="left: 9px; width: 850px;">
+			<div class="sbpage_left"></div>
+			<div class="sbpage_bind"><span class="top"></span><span class="bottom"></span></div>
+			<div class="sbpage_right"></div>
+		</div>
+	</div>
+
+
+	<div class="letters">
+		<div class="letter">A</div>
+		<div class="letter" style="background: #8791d9;">B</div>
+		<div class="letter" style="background: #3bcbd0;">C</div>
+		<div class="letter" style="background: #da5c83;">D</div>
+	</div>
+	<div class="sb_cover_close"><div class="arrow_right"></div></div>
+</div>
+
+</div>
+
+<script>
+$(document).ready(function(){
+
+	$("#profile_page").hide();
+	$("#friends_page").hide();
+
+	$(".tb_cover_open").live("click",function(){
+		$("#startup_page").fadeOut("slow");
+		$("#friends_page").fadeIn("slow");
+		$(".letters").css("display","block");
+		$(".tb_cover_close").css("display","block");
+
+	});
+	$(".sb_cover_open").live("click",function(){
+		$("#startup_page").fadeOut("slow");
+		$("#friends_page").fadeIn("slow");
+		$(".letters").css("display","block");
+		$(".sb_cover_close").css("display","block");
+
+	});
+	$(".sb_cover_close").live("click",function(){
+            $("#friends_page").fadeOut("slow");
+            $("#profile_page").fadeOut("slow");
+            $("#startup_page").fadeIn("slow");
+            $(".letters").css("display","none");
+            $(".sb_cover_close").css("display","none");
+	
+        });
+};
+</script>
