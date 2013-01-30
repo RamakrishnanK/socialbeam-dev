@@ -1,5 +1,10 @@
+# Install the MySQL driver:
+#   gem install activerecord-jdbcmysql-adapter
+#
+# Configure Using Gemfile
+# gem 'activerecord-jdbcmysql-adapter'
 development:
-  adapter: mysql2
+  adapter: mysql
   encoding: utf8
   reconnect: false
   database: socialbeam_storage_dev
@@ -8,7 +13,7 @@ development:
   password: root
   socket: /var/run/mysqld/mysqld.sock
 test:
-  adapter: mysql2
+  adapter: mysql
   encoding: utf8
   reconnect: false
   database: socialbeam_storage_test
@@ -17,7 +22,7 @@ test:
   password: root
   socket: /var/run/mysqld/mysqld.sock
 production:
-  adapter: mysql2
+  adapter: mysql
   encoding: utf8
   database: socialbeam_storage_prod
   pool: 5
