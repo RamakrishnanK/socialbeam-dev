@@ -6,10 +6,11 @@ both localbox and also an Amazon EC2 Instance Server if you happen to have one.
 
 ## Features implemented
 1. User Base (Beamers)
-2. Messaging System
-3. Social Wall Stream
-4. News Feeds
-5. Comment and Likes System on Stream
+2. Messaging System(One to One)
+3. Social Wall Stream(Public Stream)
+4. News Feeds Systems(Public Notifications)
+5. Comment and Like/Dislike on Post/Comments
+6. Friendship(Request,Pending,Accept-Reject Model)
 (this stack will increase in size definitely with time as Socialbeam percieves more features.
 
 ##Features under development
@@ -24,7 +25,7 @@ both localbox and also an Amazon EC2 Instance Server if you happen to have one.
 * Look here [Socialbeam Development Tutorials](http://raycoding.net/category/ruby-on-rails/socialbeam-development-tutorial/)
 
 ### Configuration
-* Socialbeam is running on RVM with Ruby 1.9.2 and Rails 3.2.11,MySQL, Apache2 - Passenger Rails,Capistrano
+* Socialbeam is running on RVM with jRuby 1.6.8 (Ruby - 1.9.2),Rails 3.2.11,JDBC-MySQL, Apache2 - Passenger Rails,Capistrano,Neo4j+Neography
 
 ### For more details about important parts used for Project
 * About Ruby on Rails [Getting Started](http://guides.rubyonrails.org/getting_started.html) and 
