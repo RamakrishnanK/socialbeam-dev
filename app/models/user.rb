@@ -84,4 +84,11 @@ class User < ActiveRecord::Base
   def unread_message_count
     eval 'messages.count(:conditions => ["recepient_id = ? AND read_at IS NULL", self.beamer_id])'
   end
+
+  #Create Beamer Node in Graph
+  def create_beamer_node
+    beamer = Neography::Node.create("beamer_id" =>self.beamer_id, "name" => self.full_name,"email"=>self.email)
+    p beamer
+    return beamer.exist?
+  end
 end
