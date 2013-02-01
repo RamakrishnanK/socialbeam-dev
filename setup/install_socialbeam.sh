@@ -103,41 +103,34 @@
 		
 	}
 
-	function local_install_rvm_ruby
+	function local_install_rvm_jruby
 	{
 		say_green "installing RVM for current user"
 		\curl -L https://get.rvm.io | bash -s stable
-
 		say_green "Completed installation of RVM"
-		say_green "installing Ruby 1.9.2 to be used by RVM"
-		rvm install 1.9.2
-
-		rvm use 1.9.2
-
-		say_green "Completed installing Ruby 1.9.2"
-		say_green "Creating new  gemset inside RVM to install Rails 3.2.11, to keep our gems conflict free in case you install other versions of Rails "
-		rvm gemset create rails3.2.11
-
-		say_green "created gemset rails3.2.11, adding alias to ~/.bashrc so everytime you do not have to type - rvm use 1.9.2@rails3.2.11"
-		say_green "alias userails3.2.11='rvm use 1.9.2@rails3.2.11'" 
-		sudo echo "alias userails3.2.11='rvm use 1.9.2@rails3.2.11'" >> ~/.bashrc
-
+		say_green "installing jRuby 1.6.8 to be used by RVM"
+		rvm install jruby-1.6.8
+		say_green "Completed installing jRuby 1.6.8"
+		say_green "Useing Ruby 1.9.2 for jRuby-1.6.8"
+		say_green "export JRUBY_OPTS='--1.9'" 
+		sudo echo "export JRUBY_OPTS='--1.9'" >> ~/.bashrc
+		say_green "Adding alias to ~/.bashrc so everytime you do not have to type - rvm use jruby-1.6.8"
+		say_green "alias usejruby='rvm use jruby-1.6.8'" 
+		sudo echo "alias usejruby='rvm use jruby-1.6.8'" >> ~/.bashrc
 		say_red "Sourcing ~/.bashrc"
 		source ~/.bashrc
+		usejruby
 
 	}
 
 	function aws_install_rvm_ruby_systemwide
 	{
-		say_green "installing RVM for current user"
-		\curl -L https://get.rvm.io | bash -s stable
-		
+		say_green "installing RVM systemwide"
+		sudo \curl -L https://get.rvm.io | bash -s stable
 		say_green "Completed installation of RVM"
 		say_green "Installing Ruby 1.9.2 in RVM"
 		rvm install 1.9.2
-		
 		rvm use 1.9.2
-		
 		say_green "Completed installing Ruby 1.9.2"
 		say_red "Sourcing /etc/profile"
 		source /etc/profile
@@ -145,12 +138,10 @@
 	}
 
 	function local_install_rails3
-	{
-		userails3.2.11
-		
-		say_yellow "Installing Rails 3.2.11 in gemset"
-		gem install rails -v=3.2.11
-		
+	{	
+		jruby -v
+		say_yellow "Installing Rails 3.2.11 in jRuby-1.6.8"
+		jruby -S gem install rails -v='3.2.11' --no-ri --no-rdoc
 		say_green "Completed installing Rails 3.2.11"
 	}
 
@@ -158,7 +149,6 @@
 	{
 		say_yellow "Installing Rails 3.2.11"
 		gem install rails -v=3.2.11
-		
 		say_green "Completed installing Rails 3.2.11"
 	}
 
@@ -167,15 +157,11 @@
 	{
 		say_yellow "Installing MySQL Server and Client Packges"
 		sudo apt-get install libmysqlclient-dev 
-		
 		say_yellow "Installing mysql and mysql2 gems"
 		gem install mysql -v=2.9.0
-		
 		gem install mysql2 -v=0.3.11
-		
 		say_green"Completed installing mysql and mysql2  gems"
 		sudo apt-get install mysql-server-5.1
-		
 		say_green "Completed installing MySQL Server and Client Packges"
 
 	}
@@ -183,8 +169,7 @@
 	function  install_apache2
 	{
 		say_yellow "Installing Apache2"
-		sudo apt-get install apache2 apache2-mpm-prefork apache2-prefork-dev
-		
+		sudo apt-get install apache2 apache2-mpm-prefork apache2-prefork-dev	
 		say_green "Completed installing Apache2"
 	}
 
@@ -192,15 +177,12 @@
 	{
 		say_yellow "Installing Passenger Mod Rails gem"
 		sudo apt-get install libcurl4-openssl-dev
-		
 		gem install passenger -v 3.0.19
-		
 		say_green "Completed installing Passenger Mod Rails gem"
 		say_yellow "Installing Apache2 Module for passenger,"
 		say_cyan "Please take note at the end of this module installation Passenger will as you to copy three Config Lines to /etc/apache2/apach2.conf "
 		say_cyan "Please copy  those three lines while installation proceeds so that you can paste them in apache2.conf at the end of this installation script"
 		passenger-install-apache2-module
-		
 		say_green "Completed installing Apache2 Module for passenger"
 	}
 
@@ -237,7 +219,7 @@
 		elif [ "$1" == "localbox" ];then
 			say_cyan "Setting Up Enviromnet for $1"
 			get_essentials
-			local_install_rvm_ruby
+			local_install_rvm_jruby
 			local_install_rails3
 			install_myql
 			install_apache2

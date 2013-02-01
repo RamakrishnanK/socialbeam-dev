@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,20 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130122090328) do
+ActiveRecord::Schema.define(:version => 20130122153040) do
 
-  create_table "aspects", :force => true do |t|
-    t.string   "aspect_id"
-    t.string   "aspect_code"
-    t.string   "display_aspect_text"
-    t.string   "parent_aspect_code",  :default => "friends"
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
+  create_table "events", :force => true do |t|
+    t.string   "event_id"
+    t.string   "event_display_text"
+    t.string   "event_short_description"
+    t.text     "event_description"
+    t.string   "status"
+    t.string   "beamerslist"
+    t.datetime "event_start_date"
+    t.datetime "event_end_date"
+    t.integer  "event_duration"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+    t.string   "creator_id",              :null => false
   end
 
   create_table "friendships", :force => true do |t|
     t.string   "beamer_id"
     t.string   "friend_beamer_id"
+    t.string   "requested_to"
     t.string   "status"
     t.datetime "created_at"
   end
@@ -62,23 +70,27 @@ ActiveRecord::Schema.define(:version => 20130122090328) do
   create_table "scribble_comments", :force => true do |t|
     t.string   "commentor_id"
     t.string   "commentor"
-    t.text     "body",                        :null => false
-    t.integer  "ups",          :default => 0
-    t.integer  "downs",        :default => 0
+    t.text     "body",                             :null => false
+    t.integer  "ups",               :default => 0
+    t.integer  "downs",             :default => 0
     t.string   "scribble_id"
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.text     "beamers_up_list"
+    t.text     "beamers_down_list"
   end
 
   create_table "scribbles", :force => true do |t|
     t.string   "post"
     t.string   "posted_by"
     t.string   "posted_by_uid"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.integer  "ups"
     t.integer  "downs"
-    t.string   "scribble_id",   :null => false
+    t.string   "scribble_id",       :null => false
+    t.text     "beamers_up_list"
+    t.text     "beamers_down_list"
   end
 
   create_table "users", :force => true do |t|
