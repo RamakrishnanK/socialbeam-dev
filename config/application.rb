@@ -2,7 +2,7 @@ require File.expand_path('../boot', __FILE__)
 
 # Pick the frameworks you want:
 require 'rails/all'
-require 'neo4j'
+#require 'neo4j'
 #require 'neography'
 
 if defined?(Bundler)

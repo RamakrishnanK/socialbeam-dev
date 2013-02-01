@@ -2,7 +2,7 @@
 Socialbeam is a Open Source Development Project for building a Social Network. In its early stages of development phase Socialbeam aims to implement
 the primary set of features that a Social Network consists of. The structure of the platform Socialbeam hopefully will implement most if not all social network features that we see around presently. 
 Socialbeam is concurrently developed on localbox running Ubuntu 11.10 and deployed simultaneously on Amazon EC2 Instance Server Box. Please find below the guide to setup 
-both localbox and also an Amazon EC2 Instance Server if you happen to have one.
+both localbox. Instructions for setting up on Amazon EC2 will be detailed out in future.
 
 ## Features implemented
 1. User Base (Beamers)
@@ -11,7 +11,6 @@ both localbox and also an Amazon EC2 Instance Server if you happen to have one.
 4. News Feeds Systems(Public Notifications)
 5. Comment and Like/Dislike on Post/Comments
 6. Friendship(Request,Pending,Accept-Reject Model)
-(this stack will increase in size definitely with time as Socialbeam percieves more features.
 
 ##Features under development
 1. Groups
@@ -52,7 +51,6 @@ both localbox and also an Amazon EC2 Instance Server if you happen to have one.
 * Install Neo4J Server and Executables,Execute commands from APP directory: `rake neo4j:install` and `rake neo4j:start`
 * Useful Neo4J Commands
 * Commands for Neo4j
-  ==================
   1. rake neo4j:install # Install Neo4j to the neo4j directory under your project
   2. rake neo4j:install[community,1.6.M03] # Install Neo4j Community edition, version 1.6.M03
   3. rake neo4j:start # Start Neo4j
