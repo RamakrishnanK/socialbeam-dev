@@ -7,10 +7,10 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     @newsfeed=Newsfeed.new
     @newsfeed.log(NEWSFEED_STREAM_VERBS[:new_user],'new_user',@user.beamer_id,@user.class.to_s,"#{@user.first_name} #{@user.last_name}",nil,nil,nil,nil,nil,0)
-    if @user.save && @newsfeed.save && @user.create_beamer_node
-      session[:user_id]=@user.id
-      redirect_to root_url
+    if @user.save && @newsfeed.save #&& @user.create_beamer_node
+      redirect_to root_url,:notice => "You have been registered successfully.You can now log in."
     else
+      flash[:error]=@user.errors.full_messages
       render :action => "new"
     end
   end

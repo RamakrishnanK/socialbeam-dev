@@ -21,6 +21,8 @@ gem 'rvm-capistrano','~>1.2.7'
 
 #ActiveModels has_secure_password
 gem "bcrypt-ruby", '~>3.0.1',:require => "bcrypt"
+#Authentication Framework
+gem 'authlogic','~>3.2.0'
 
 #Paginations
 gem 'will_paginate', '~> 3.0'

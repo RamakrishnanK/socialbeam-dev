@@ -1,14 +1,3 @@
-</br>
-</br>
-</br>
-<% if @user.errors.any? %>
-<% @user.errors.each do |attr,msg| %>
-<div class="alert alert-error">
-  <button type="button" class="close" data-dismiss="alert">&times;</button>
-  <%= msg %>
-</div>
-<% end %>
-<% end %>
 <div class="sb-signup-wrapper">
   <div class="sb-signup">
     <%= form_for(@user) do |f| %>

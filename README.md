@@ -5,26 +5,27 @@ Socialbeam is concurrently developed on localbox running Ubuntu 11.10 and deploy
 both localbox. Instructions for setting up on Amazon EC2 will be detailed out in future.
 
 ## Features implemented
-1. User Base (Beamers)
-2. Messaging System(One to One)
+1. User Base (Beamers - Registration and Authentication using Authlogic,Nodes on GraphDB and SQLDB)
+2. Messaging System
 3. Social Wall Stream(Public Stream)
 4. News Feeds Systems(Public Notifications)
 5. Comment and Like/Dislike on Post/Comments
-6. Friendship(Request,Pending,Accept-Reject Model)
+6. Friendship (Request,Pending,Accept-Reject Model,Nodes on GraphDB and SQLDB) 
 
 ##Features under development
-1. Groups
+1. Groups - Public and Private
 2. User Profile
-3. Email
-4. WorldWide News Board
+3. Email System
+4. WorldWide News Board based on Interests
 5. Pages
 6. Events
+7. Topics,Tags Cloud and Trends
  
 ### Socialbeam Step by Step Development Tutorial 
 * Look here [Socialbeam Development Tutorials](http://raycoding.net/category/ruby-on-rails/socialbeam-development-tutorial/)
 
 ### Configuration
-* Socialbeam is running on RVM with jRuby 1.6.8 (Ruby - 1.9.2),Rails 3.2.11,JDBC-MySQL, Apache2 - Passenger Rails,Capistrano,Neo4j+Neography
+* Primary Ingredients of Socialbeam -  RVM with jRuby 1.6.8 (Ruby - 1.9.2),Rails 3.2.11,JDBC-MySQL, Apache2 - Passenger Rails,Capistrano,Neo4j+Neography, Authlogic
 
 ### For more details about important parts used for Project
 * About Ruby on Rails [Getting Started](http://guides.rubyonrails.org/getting_started.html) and 
@@ -35,9 +36,10 @@ both localbox. Instructions for setting up on Amazon EC2 will be detailed out in
 * About [JRUBY read here](https://github.com/jruby/jruby)
 * About [Neo4j Rails read here](https://github.com/andreasronge/neo4j)
 * About [Neography API for Neo4j Rails read here](https://github.com/maxdemarzi/neography)
+* About [Authlogic read here](https://github.com/binarylogic/authlogic)
 
 
-## Guide to setUp System on Local Box and also in Amazon EC2 Instance(if you have one)
+## Guide to setUp System on Localbox
 
 ### Local System Setup
 * Clone the project into some direcrtory you want on your system.

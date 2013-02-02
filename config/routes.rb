@@ -1,5 +1,4 @@
 Socialbeam::Application.routes.draw do
-
   resources :scribbles do
     resources :scribble_comments
   end
@@ -16,18 +15,16 @@ Socialbeam::Application.routes.draw do
       get 'loadmorescribbles'
     end
   end
-  resources :sessions
+  resources :user_sessions
   resources :newsfeeds
   root :to => 'socialbeams#home'
   get  "refresh"  => "socialbeams#refreshscribbles", :as => "refresh"
   get "votedup"  => "socialbeams#votedup", :as => "votedup"
   get  "voteddown"  => "socialbeams#voteddown", :as => "voteddown"
 
-  #Sessions Users
-  get "logout_user" => "sessions#destroy", :as => "logout_user"
-  post "login_user" => "sessions#new", :as => "login_user"
-
-  #Users
+  #Sessions & Users
+  get "logout_user" => "user_sessions#destroy", :as => "logout_user"
+  get "login_user" => "user_sessions#new", :as => "login_user"
   get "signup" => "users#new", :as => "signup"
   match "/myconnections/:beamer_id" => "users#showconnections", :as=>"myconnections"
   match "users/:beamer_id" => "users#show" , :as => 'profile'
