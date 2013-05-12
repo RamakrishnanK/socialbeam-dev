@@ -1,7 +1,6 @@
 # PROJECT HAS MIGRATED/MOVED/CONTINUED/SHIFTED TO [palBuddy](https://github.com/raycoding/palbuddy)
 
 
-[Socialbeam](https://s3.amazonaws.com/socialbeam-repo/images/sb_large.png "Socialbeam")
 ## Features implemented
 1. User Base (Beamers - Registration and Authentication using Authlogic,Nodes on GraphDB and SQLDB)
 2. Messaging System
