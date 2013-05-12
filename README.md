@@ -1,3 +1,5 @@
+# PROJECT HAS MIGRATED/MOVED/CONTINUED/SHIFTED TO [palBuddy](https://github.com/raycoding/palbuddy)
+
 # Social Network Development Project in Rails - SOCIALBEAM![Socialbeam](https://s3.amazonaws.com/socialbeam-repo/images/sb_large.png "Socialbeam")
 Socialbeam is a Open Source Development Project for building a Social Network. In its early stages of development phase Socialbeam aims to implement
 the primary set of features that a Social Network consists of. The structure of the platform Socialbeam hopefully will implement most if not all social network features that we see around presently. 
